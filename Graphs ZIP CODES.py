@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.patches as mpatches
+from matplotlib.patches import Patch
 
 # Load data
 zdf = pd.read_csv("zdf.csv")
@@ -50,7 +51,7 @@ ax.set_title('Percentage of Taxes by Type')
 ## Create custom legend
 handles = []
 for i, tax_type in enumerate(tax_perc.index):
-    handles.append(mpatches.Patch(color=pal[i], label=tax_type))
+    handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
 ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
 
 plt.show()
@@ -168,7 +169,7 @@ ax.set_title(ttl)
 # creating custom legend
 handles = []
 for i, tax_type in enumerate(tax_perc.index):
-    handles.append(mpatches.Patch(color=pal[i], label=tax_type))
+    handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
 ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
 
 plt.show()
