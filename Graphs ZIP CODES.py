@@ -175,7 +175,7 @@ def getZipCodeGraph(zipCode, price):
   ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
   elem = Element("image_container")
-  elem.write(fig)
+  elem.write(fig.tight_layout())
   elem2 = Element("price_container")
   elem2.write(tp)
     
