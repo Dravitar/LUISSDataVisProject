@@ -173,9 +173,10 @@ def getZipCodeGraph(zipCode, price):
   for i, tax_type in enumerate(tax_perc.index):
       handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
   ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
+  fig.set_tight_layout(True)
 
   elem = Element("image_container")
-  elem.write(fig.tight_layout())
+  elem.write(fig)
   elem2 = Element("price_container")
   elem2.write(tp)
     
