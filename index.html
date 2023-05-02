@@ -22,7 +22,8 @@
 		<form>
 			<label for="zip_code">Enter your zip code:</label>
 			<input type="text" id="zip_code" name="zip_code">
-			<button type="button" onclick="processZipCode()">Submit</button>
+			<input type="text" id="price" name="price">
+			<button type="button" onclick="getZipCodeGraph('zip_code','price')">Submit</button>
 		</form>
 		<div id="image_container"></div>
 	</main>
