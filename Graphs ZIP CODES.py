@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.patches as mpatches
 from matplotlib.patches import Patch
+from pyodide.http import open_url
 
 # Load data
-zdf = pd.read_csv("zdf.csv")
+zdf = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/zdf.csv"))
 zdf = zdf.rename(columns={'total_rate': 'Total Rate',
                           'state_rate': 'State Rate',
                           'county_rate': 'County Rate',
@@ -54,7 +55,7 @@ for i, tax_type in enumerate(tax_perc.index):
     handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
 ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
-plt.show()
+#plt.show()
 
 # GRAPH 3: Box plot for comparison of tax rates by type
 ## Select columns for box plot
@@ -80,7 +81,7 @@ for median in bp['medians']:
 ax.set_title('Comparison of Tax Rates by Type')
 ax.set_ylabel('Tax Rate')
 
-plt.show()
+#plt.show()
 
 # GRAPH 4: Scatter plot for density vs. total taxes by region
 ## Extract latitude from Geo Point column
@@ -110,7 +111,7 @@ ax.set_ylabel('Total Taxes')
 ax.legend()
 
 ## Show the plot
-plt.show()
+#plt.show()
 
 
 # GRAPH 5: bubble plot
