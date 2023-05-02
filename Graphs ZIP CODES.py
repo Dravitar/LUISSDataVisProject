@@ -45,14 +45,14 @@ tax_perc = tax_perc.mean().sort_values(ascending=False)
 colors = ["#FE0303", "#F8F8FE", "#00008A", "#6394EC"]
 pal = sns.color_palette(colors)
 fig, ax = plt.subplots()
-wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', pctdistance=1.18, startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
 ax.set_title('Percentage of Taxes by Type')
 
 ## Create custom legend
 handles = []
 for i, tax_type in enumerate(tax_perc.index):
     handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
-ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
 plt.show()
 
@@ -163,13 +163,13 @@ tax_perc = tax_perc.mean().sort_values(ascending=False)
 colors = ["#FE0303", "#F8F8FE", "#00008A", "#6394EC"]
 pal = sns.color_palette(colors)
 fig, ax = plt.subplots()
-wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', pctdistance=1.18, startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
 ax.set_title(ttl)
 
 # creating custom legend
 handles = []
 for i, tax_type in enumerate(tax_perc.index):
     handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
-ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
 plt.show()
