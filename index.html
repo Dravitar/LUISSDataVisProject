@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+		<script type="text/javascript" src="webCode.js"></script>
+        <title>American Zip Code Visualizer</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body style="text-align:center" onLoad="" onKeyDown="">
+        <py-config>
+            packages = ["matplotlib", "pandas", "folium"]
+        </py-config>
+        <py-script src="./webCode.py"></py-script>
+        <py-script src="./zipcodeapi.py"></py-script>
+		<div style="display:table-cell; vertical-align:middle">
+            This is now a slightly better website. <br/>
+            The data is <span id="dataHeadSpace">0</span>.
+            <button py-click="test()" type="button" id="testButton">
+                Push me to change the value.
+            </button>
+
+        </div>
+        
+    </body>
