@@ -7,18 +7,42 @@
         <title>American Zip Code Visualizer</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body style="text-align:center" onLoad="" onKeyDown="">
         <py-config>
             packages = ["matplotlib", "pandas", "folium"]
         </py-config>
         <py-script src="https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/webCode.py"></py-script>
-		<div style="display:table-cell; vertical-align:middle">
-            This is now a slightly better website. <br/>
-            The data is <span id="dataHeadSpace">0</span>.
-            <button py-click="test()" type="button" id="testButton">
-                Push me to change the value.
-            </button>
-
-        </div>
-        
+	<header>
+		<button class="tab active" onclick="showSection('main')">Main</button>
+		<button class="tab" onclick="showSection('about')">About</button>
+		<button class="tab" onclick="showSection('contact')">Contact</button>
+	</header>
+	<main id="main_section">
+		<h1>Welcome to My Application</h1>
+		<form>
+			<label for="zip_code">Enter your zip code:</label>
+			<input type="text" id="zip_code" name="zip_code">
+			<button type="button" onclick="processZipCode()">Submit</button>
+		</form>
+		<div id="image_container"></div>
+	</main>
+	<section id="about_section" style="display:none">
+		<h2>About</h2>
+		<p>Some information about the application.</p>
+	</section>
+	<section id="contact_section" style="display:none">
+		<h2>Contact</h2>
+		<ul>
+			<li><a href="mailto:example@example.com">Email</a></li>
+			<li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+			<li><a href="https://twitter.com/">Twitter</a></li>
+		</ul>
+	</section>
+	<footer>
+		<ul>
+			<li><a href="#">Privacy Policy</a></li>
+			<li><a href="#">Terms of Service</a></li>
+			<li><a href="#">About Us</a></li>
+		</ul>
+	</footer>        
     </body>
+</html>
