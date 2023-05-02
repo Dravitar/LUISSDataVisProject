@@ -145,7 +145,7 @@ sns.scatterplot(nb,x="Density",y="Total Rate",size="Number of Cities",hue='Regio
 def getZipCodeGraph(zipCode, price):
   z = int(zipCode)
   p = float(price)
-
+  
   for i in range (0, len(zdf)):
       if zdf["Zip Code"][i] == z:
           tp = p * (1+zdf["Total Rate"][i])
@@ -174,4 +174,7 @@ def getZipCodeGraph(zipCode, price):
   ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
   elem = Element("image_container")
-    elem.write(fig)
+  elem.write(fig)
+  elem2 = Element("price_container")
+  elem2.write(tp)
+    
