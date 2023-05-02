@@ -15,3 +15,7 @@ function showSection(sectionId) {
 	var activeTab = document.querySelector(".tab[data-section='" + sectionId + "']");
 	activeTab.classList.add("active");
 }
+
+function test() {
+	alert("test")
+}
