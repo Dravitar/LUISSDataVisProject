@@ -142,34 +142,36 @@ sns.scatterplot(nb,x="Density",y="Total Rate",size="Number of Cities",hue='Regio
 # visualize its distribution
 
 # first, let's calculate the total price from the inputs
-z = int(input("Insert your zip code: "))
-p = float(input("Insert your price: "))
+def getZipCodeGraph(zipCode, price):
+  z = int(zipCode)
+  p = float(price)
 
-for i in range (0, len(zdf)):
-    if zdf["Zip Code"][i] == z:
-        tp = p * (1+zdf["Total Rate"][i])
-        tp = round(tp,2)
-print ("Your price after sales taxes is: $" + str(tp))
+  for i in range (0, len(zdf)):
+      if zdf["Zip Code"][i] == z:
+          tp = p * (1+zdf["Total Rate"][i])
+          tp = round(tp,2)
+  print ("Your price after sales taxes is: $" + str(tp))
 
-# now, let's do the visualization for the zip code given as input
-data = zdf[zdf["Zip Code"] == z].reset_index()
-ttl = ("Distribution of Sales Taxes in " + str(data["Official USPS city name"][0]) + ", " + str(data["Official State Name"][0]))
+  # now, let's do the visualization for the zip code given as input
+  data = zdf[zdf["Zip Code"] == z].reset_index()
+  ttl = ("Distribution of Sales Taxes in " + str(data["Official USPS city name"][0]) + ", " + str(data["Official State Name"][0]))
 
-# getting the data ready for the pie chart
-tax_perc = data[['State Rate', 'County Rate', 'City Rate', 'Additional Rate']].div(data['Total Rate'], axis=0) * 100
-tax_perc = tax_perc.mean().sort_values(ascending=False)
+  # getting the data ready for the pie chart
+  tax_perc = data[['State Rate', 'County Rate', 'City Rate', 'Additional Rate']].div(data['Total Rate'], axis=0) * 100
+  tax_perc = tax_perc.mean().sort_values(ascending=False)
 
-# drawing the pie
-colors = ["#FE0303", "#F8F8FE", "#00008A", "#6394EC"]
-pal = sns.color_palette(colors)
-fig, ax = plt.subplots()
-wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', pctdistance=1.18, startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
-ax.set_title(ttl)
+  # drawing the pie
+  colors = ["#FE0303", "#F8F8FE", "#00008A", "#6394EC"]
+  pal = sns.color_palette(colors)
+  fig, ax = plt.subplots()
+  wedges, texts, autotexts = ax.pie(tax_perc, colors=pal, autopct='%1.1f%%', pctdistance=1.18, startangle=90, counterclock=False, wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+  ax.set_title(ttl)
 
-# creating custom legend
-handles = []
-for i, tax_type in enumerate(tax_perc.index):
-    handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
-ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
+  # creating custom legend
+  handles = []
+  for i, tax_type in enumerate(tax_perc.index):
+      handles.append(mpatches.Patch(facecolor=pal[i], edgecolor='black', label=tax_type))
+  ax.legend(handles=handles, title="Tax Type", loc="center left", bbox_to_anchor=(1.03, 0, 0.5, 1.6))
 
-plt.show()
+  elem = Element("image_container")
+    elem.write(fig)
