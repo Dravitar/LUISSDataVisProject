@@ -26,6 +26,8 @@
 			<input type="text" id="price" name="price">
 			<button type="button" id="zipCodeSubmissionButton">Submit</button>
 			<script>document.getElementById("zipCodeSubmissionButton").addEventListener("click", () => {
+					price = document.getElementById("price").value;
+					zip_code = document.getElementById("zip_code").value;
 					const gZCG = pyscript.interpreter.globals.get('getZipCodeGraph');
 					gZCG(zip_code, price);
 				});
