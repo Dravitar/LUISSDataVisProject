@@ -17,8 +17,8 @@
 		<button class="tab" onclick="showSection('about')">About</button>
 		<button class="tab" onclick="showSection('contact')">Contact</button>
 	</header>
-	<main id="main_section">
-		<h1>Welcome to My Application</h1>
+	<main id="main_section", style="text-align: center">
+		<h1>Welcome to SalesTaxExplorer!</h1>
 		<form>
 			<label for="zip_code">Enter your zip code:</label>
 			<input type="text" id="zip_code" name="zip_code">
@@ -33,7 +33,7 @@
 				});
 			</script>
 		</form>
-		<div id="price_container"></div>
+		<h3>Your total price after state taxes would be $<span id="price_container"></span>.</h3>
 		<div id="image_container"></div>
 	</main>
 	<section id="about_section" style="display:none">
