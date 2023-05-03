@@ -3,10 +3,16 @@ header {
 }
 main {
 	background-color: #afa;
+	background-image: url('https://github.com/Dravitar/LUISSDataVisProject/blob/main/simon-berger-twukN12EN7c-unsplash.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 footer {
 	background-color: #faa;
 }
+
 /* Style the tab buttons */
 .tab {
 	background-color: #4CAF50;
