@@ -520,7 +520,7 @@ var usMap = {
 var active_states = ['ca', 'co', 'ct', 'fl', 'ga', 'il', 'ma', 'md', 'mi', 'nc', 'nh', 'nj', 'ny', 'oh', 'pa', 'tx', 'va'];
 
 // draw map
-var $map_container = $("#map-container");
+var $map_container = document.getElementById("#map-container");
 var map_ratio = .6;
 var state_url = "#";
 var R = new ScaleRaphael("usa-map", 1000, 600);
