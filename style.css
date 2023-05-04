@@ -1,15 +1,14 @@
 header {
-	background-color: #aaf;
+}
+body {
+	background-image: url('simon-berger-twukN12EN7c-unsplash.jpg');
 }
 main {
-	background-image: url('simon-berger-twukN12EN7c-unsplash.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
 }
 footer {
-	background-color: #faa;
 }
 
 /* Style the tab buttons */
