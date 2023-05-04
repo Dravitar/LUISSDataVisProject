@@ -3,6 +3,7 @@
 	<head>
         <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css"/>
         <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+	<script type="text/javascript" src="mapCode.js"></script>
 	<script type="text/javascript" src="webCode.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
         <title>American Zip Code Visualizer</title>
@@ -34,12 +35,18 @@
 				});
 			</script>
 		</form>
-		<h3>Your total price would be $<span id="price_container"></span> after state taxes.</h3>
+		<h3>Your total price would be $<span id="price_container">0.00</span> after state taxes.</h3>
 		<div id="image_container"></div>
+		<div id="map-container">
+			<div id="usa-map"></div>
+		</div>
 	</main>
 	<section id="about_section" style="display:none">
 		<h2>About</h2>
 		<p>Some information about the application.</p>
+		<p>State Sales Tax data from <a href="https://api-ninjas.com/api/salestax">API Ninjas</a>.</p>
+		<p>Other state information from <a href="https://data.opendatasoft.com/explore/dataset/georef-united-states-of-america-zc-point%40public/table/">opendatasoft</a>.</p>
+		<p>Selectable Map Element from <a href="https://codepen.io/jen-huang/pen/mybZGz">Jen Huang</a>.</p>
 	</section>
 	<section id="contact_section" style="display:none">
 		<h2>Contact</h2>
