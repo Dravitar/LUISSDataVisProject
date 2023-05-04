@@ -7,7 +7,6 @@ import plotly.io as pio
 from pyodide.http import open_url
 
 # Load data
-#zdf = pd.read_csv('zdf.csv')
 zdf = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/zdf.csv"))
 zdf = zdf.rename(columns={'total_rate': 'Total Rate',
                           'state_rate': 'State Rate',
