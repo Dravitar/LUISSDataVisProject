@@ -39,8 +39,10 @@
 		<div id="image_container"></div>
 		<div id="map-container">
 			<div id="usa-map"></div>
-			<script>const USAMap = pyscript.interpreter.globals.get('USAMap');
-				USAMap();
+			<script>document.getElementById("map-container").addEventListener("load", () => {
+					const USAMap = pyscript.interpreter.globals.get('USAMap');
+					USAMap();
+				});
 			</script>
 		</div>
 	</main>
