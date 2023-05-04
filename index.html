@@ -39,6 +39,9 @@
 		<div id="image_container"></div>
 		<div id="map-container">
 			<div id="usa-map"></div>
+			<script>const USAMap = pyscript.interpreter.globals.get('USAMap');
+				USAMap();
+			</script>
 		</div>
 	</main>
 	<section id="about_section" style="display:none">
@@ -46,7 +49,6 @@
 		<p>Some information about the application.</p>
 		<p>State Sales Tax data from <a href="https://api-ninjas.com/api/salestax">API Ninjas</a>.</p>
 		<p>Other state information from <a href="https://data.opendatasoft.com/explore/dataset/georef-united-states-of-america-zc-point%40public/table/">opendatasoft</a>.</p>
-		<p>Selectable Map Element from <a href="https://codepen.io/jen-huang/pen/mybZGz">Jen Huang</a>.</p>
 	</section>
 	<section id="contact_section" style="display:none">
 		<h2>Contact</h2>
