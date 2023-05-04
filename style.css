@@ -24,3 +24,7 @@ footer {
 .active {
 	background-color: #8BC34A;
 }
+#map-container {
+	width: 50%;
+	margin: 2em auto;
+}
