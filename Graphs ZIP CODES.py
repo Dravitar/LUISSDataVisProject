@@ -15,11 +15,13 @@ zdf = zdf.rename(columns={'total_rate': 'Total Rate',
                           'additional_rate': 'Additional Rate'})
 
 # Calculate averages by state and by city
-states = zdf.groupby('Official State Name')['Total Rate', 'State Rate', 'County Rate', 'City Rate', 'Additional Rate'].mean()
-cities = zdf.groupby(['Official State Name', 'Official USPS city name'])['Total Rate', 'State Rate', 'County Rate', 'City Rate', 'Additional Rate'].mean()
+states = zdf.groupby('Official State Name')[['Total Rate', 'State Rate', 'County Rate', 'City Rate', 'Additional Rate']].mean()
+cities = zdf.groupby(['Official State Name', 'Official USPS city name'])[['Total Rate', 'State Rate', 'County Rate', 'City Rate', 'Additional Rate']].mean()
 
 # creating the colors dictionary
 colors = {'State Rate':'#A3333D', 'County Rate':'#FFFFFF', 'City Rate':'#1C1F33', 'Additional Rate':'#477998'}
+
+# Rest of the code remains the same
 
 #==================================================================================
 
