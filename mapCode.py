@@ -1,6 +1,7 @@
 import pandas as pd
 from pyodide.http import open_url
 import json
+import requests
 
 stateAvs = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/StateAverages.csv"))
 state_geo = json.loads(requests.get("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json").text)
