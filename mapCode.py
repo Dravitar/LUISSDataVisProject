@@ -1,10 +1,12 @@
 import pandas as pd
-from pyodide.http import open_url
+from pyodide.http import open_url, pyfetch, FetchResponse
 import json
-import requests
+
 
 stateAvs = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/StateAverages.csv"))
-state_geo = json.loads(requests.get("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json").text)
+#state_geo = json.loads(requests.get("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json").text)
+response = await pyfetch("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json", method="GET", headers=headers)
+state_geo = await response.json()
 
 m = folium.Map(location=[48, -102], zoom_start=3)
 
