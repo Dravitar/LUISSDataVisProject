@@ -1,6 +1,7 @@
 import pandas as pd
 from pyodide.http import open_url, pyfetch, FetchResponse
 import json
+import folium
 
 
 stateAvs = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/StateAverages.csv"))
@@ -22,6 +23,4 @@ folium.Choropleth(
 
 folium.LayerControl().add_to(m)
 
-def USAMap():
-	elem2 = Element("usa-map")
-	elem2.write(m)
+m.save("map.html")
