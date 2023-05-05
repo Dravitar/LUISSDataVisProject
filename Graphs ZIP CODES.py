@@ -7,6 +7,7 @@ import plotly.io as pio
 from pyodide.http import open_url
 import plotly.offline as pyo
 
+
 # Load data
 zdf = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/zdf.csv"))
 zdf = zdf.rename(columns={'total_rate': 'Total Rate',
@@ -43,6 +44,8 @@ layout = go.Layout(title='Highest Total Sales Tax Rates', barmode='stack', xaxis
                    bargap=0.15, bargroupgap=0.1)
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
+pyo.plot(fig, filename='Highest_total_sales_tax_rates.html', auto_open=False)
+
 #fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Highest Total Sales Tax Rates.png', format='png', width=1200, height=800)
@@ -63,6 +66,7 @@ layout = go.Layout(title='Lowest Total Sales Tax Rates', barmode='stack', xaxis=
                    bargap=0.15, bargroupgap=0.1)
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
+pyo.plot(fig, filename='lowest_total_sales_tax_rates.html', auto_open=False)
 #fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Lowest Total Sales Tax Rates.png', format='png', width=1200, height=800)
@@ -83,6 +87,7 @@ layout=go.Layout(title='Tax Rates by Type',font={'size': 20},paper_bgcolor='whit
                  legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}, 'xanchor':'right', 'x':1.3})
 
 fig = go.Figure(data=data, layout=layout)
+pyo.plot(fig, filename='tax_rates_by_type.html', auto_open=False)
 # display the chart
 #fig.show()
 # Save the picture in HD
@@ -94,21 +99,16 @@ fig = go.Figure(data=data, layout=layout)
 ## Select columns for box plot
 boxplot_data = states[['State Rate', 'County Rate', 'City Rate', 'Additional Rate']]
 
-# Create a box plot
 traces = []
-for col in boxplot_data.columns: 
-    trace = go.Box(y=boxplot_data[col], name=col, marker={'color': colors[col],'line': {'color': 'black', 'width': 2}})
+for col in boxplot_data.columns:
+    trace = go.Box(y=boxplot_data[col], name=col, marker={'color': colors[col], 'line': {'color': 'black', 'width': 2}})
     traces.append(trace)
 
-# Create the layout
 layout = go.Layout(title='Comparison of Tax Rates by Type', font={'size': 20}, xaxis={'title': 'Tax Rate Types'}, yaxis={'title': 'Rate Value'},
                    paper_bgcolor='white')
 
-# Create the figure and add the traces and layout
 fig = go.Figure(data=traces, layout=layout)
-
-# Show the plot
-fig.show()
+pyo.plot(fig, filename='comparison_of_tax_rates_by_type.html', auto_open=False)
 
 
 # GRAPH 3: Box plot for comparison of tax rates by type
@@ -212,7 +212,8 @@ def getZipCodeGraph(zipCode, price):
   fig = go.Figure(data=data, layout=layout)
 
   elem = Element("image_container")
-  elem.write(fig)
+pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
+
   elem2 = Element("price_container")
   elem2.write(tp)
-  div = pyo.plot(data, include_plotlyjs=False, output_type='div')  
+ 
