@@ -4,7 +4,7 @@ import json
 
 
 stateAvs = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/StateAverages.csv"))
-state_geo = json.loads(open_url("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json").text)
+state_geo = json.loads(open_url("https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json").read())
 
 m = folium.Map(location=[48, -102], zoom_start=3)
 
