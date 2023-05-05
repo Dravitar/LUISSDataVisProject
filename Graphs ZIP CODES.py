@@ -5,6 +5,7 @@ import seaborn as sns
 import plotly.graph_objs as go
 import plotly.io as pio
 from pyodide.http import open_url
+import plotly.offline as pyo
 
 # Load data
 zdf = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/zdf.csv"))
@@ -214,4 +215,4 @@ def getZipCodeGraph(zipCode, price):
   elem.write(fig)
   elem2 = Element("price_container")
   elem2.write(tp)
-    
+  div = pyo.plot(data, include_plotlyjs=False, output_type='div')  
