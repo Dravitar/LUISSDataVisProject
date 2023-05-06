@@ -39,13 +39,15 @@
 		<h3>Your total price would be $<span id="price_container">0.00</span> after state taxes.</h3>
 		<div id="image_container"></div>
 		<div id="map-container">
+			<button type="button" id="show-map-button">Show US Map</button>
 			<div id="usa-map"></div>
 			<script type='text/javascript'>
 				function plot(graph, chart) {
 					var figure = JSON.parse(graph)
 					Plotly.newPlot(chart, figure, {});
 				};
-				document.getElementById("map-container").addEventListener("load", () => {
+				document.getElementById("show-map-button").addEventListener("click", () => {
+					document.getElementById("show-map-button").style.visibility = "None";
 					const mapLoad = pyscript.interpreter.globals.get('startMap');
 					mapLoad();
 				});
