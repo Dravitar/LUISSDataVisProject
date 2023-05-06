@@ -43,7 +43,8 @@ folium.Choropleth(
 # Display the map
 #map_usa
 def startMap():
-	js.plot(map_usa.to_json(), "usa-map")
+	elem = Element("usa-map")
+  	elem.write(map_usa)
 
 
 def pie_state(state_name):
