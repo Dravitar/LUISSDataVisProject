@@ -28,6 +28,40 @@ colors = {'State Rate':'#A3333D', 'County Rate':'#FFFFFF', 'City Rate':'#1C1F33'
 #==================================================================================
 
 # GRAPH 1: Stacked bar charts for highest and lowest total taxes
+## All States
+# Set the default renderer to 'svg'
+pio.renderers.default = 'svg'
+
+## Sort the states in ascending order based on the total tax rate
+
+data = states.sort_values('Total Rate', ascending=False).drop(columns='Total Rate')
+
+# Create traces for each category and a layout for the graph
+traces = []
+for col in data.columns:
+    trace = go.Bar(x=data.index,y=data[col],name=col,marker={'color': colors[col], 'line': {'color': 'black', 'width': 2}},hovertemplate='%{x}<br>%{y:.2f}<extra></extra>')
+    traces.append(trace)
+
+# Create a Figure object, add the traces, and show the plot
+fig = go.Figure(data=traces)
+
+# Update the layout to create a stacked bar plot
+fig.update_layout(
+    barmode='stack',title={'text':"Average Sales Tax Rate by State",'x': 0.5,
+                           'xanchor': 'center','yanchor': 'top','font': {'size': 30, 'family': 'Arial Black'}},
+    xaxis_title="States",yaxis_title="Tax Rate",
+    plot_bgcolor='white', paper_bgcolor='white',bargap=0.1,
+    width = 1100)
+# Update the x-axis font size
+fig.update_xaxes(tickfont=dict(size=13),tickangle=270,automargin=True)
+
+fig.show()
+
+# Save the picture in HD
+pio.write_image(fig, file='Sales Tax Rates Avg.png', format='png', width=1920, height=1080)
+
+
+
 ## States with highest total taxes
 data = states.sort_values('Total Rate', ascending=False).head(5).drop(columns='Total Rate')
 # Create traces for each category and a layout for the graph
@@ -47,9 +81,8 @@ layout = go.Layout(title={'text': 'Highest Total Sales Tax Rates','x': 0.5,'xanc
 
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
-pyo.plot(fig, filename='Highest_total_sales_tax_rates.html', auto_open=False)
 
-fig.show()
+#fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Highest Total Sales Tax Rates.png', format='png', width=1200, height=800)
 
@@ -69,8 +102,7 @@ layout = go.Layout(title={'text': 'Lowest Total Sales Tax Rates','x': 0.5,'xanch
                    bargap=0.15, bargroupgap=0.1)
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
-pyo.plot(fig, filename='lowest_total_sales_tax_rates.html', auto_open=False)
-fig.show()
+#fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Lowest Total Sales Tax Rates.png', format='png', width=1200, height=800)
 
@@ -86,11 +118,10 @@ colors_list = [colors[idx] for idx in tax_perc.index]
 # create the pie chart
 data=[go.Pie(labels=tax_perc.index, values=values, marker_colors=colors_list,sort=False,
              direction='clockwise',textposition='outside',hoverinfo='label+percent',marker={'line': {'color': 'black', 'width': 2}})]
-layout=go.Layout(title='Tax Rates by Type',font={'size': 20},paper_bgcolor='white',
+layout=go.Layout(title='Tax Rates by Type',font={'size': 20, 'family': 'Arial Black'},paper_bgcolor='white',
                  legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}, 'xanchor':'right', 'x':1.3})
 
 fig = go.Figure(data=data, layout=layout)
-pyo.plot(fig, filename='tax_rates_by_type.html', auto_open=False)
 # display the chart
 #fig.show()
 # Save the picture in HD
@@ -122,9 +153,9 @@ for median in bp['medians']:
 ax.set_title('Comparison of Tax Rates by Type')
 ax.set_ylabel('Tax Rate')
 
+plt.show()
 plt.savefig("Boxplot.png", dpi=300)
 
-#plt.show()
 
 
 ## Extract latitude from Geo Point column
@@ -220,3 +251,4 @@ def getZipCodeGraph(zipCode, price):
   
   elem2 = Element("price_container")
   elem2.write(tp)
+ 
