@@ -7,6 +7,7 @@ import plotly.graph_objs as go
 import plotly.io as pio
 import plotly.offline as pyo
 from pyodide.http import open_url
+import js
 
 
 # Load data
@@ -212,10 +213,8 @@ def getZipCodeGraph(zipCode, price):
     
   fig = go.Figure(data=data, layout=layout)
   
-
-  elem = Element("image_container")
   pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
-  elem.write(fig)
+  js.plot(fig.to_json(), "image_container")
   
   elem2 = Element("price_container")
   elem2.write(tp)
