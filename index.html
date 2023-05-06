@@ -39,9 +39,14 @@
 		<div id="image_container"></div>
 		<div id="map-container">
 			<div id="usa-map"></div>
-			<script>document.getElementById("map-container").addEventListener("load", () => {
-					const USAMap = pyscript.interpreter.globals.get('USAMap');
-					USAMap();
+			<script type='text/javascript'>
+				function plot(graph, chart) {
+					var figure = JSON.parse(graph)
+					Plotly.newPlot(chart, figure, {});
+				};
+				document.getElementById("map-container").addEventListener("load", () => {
+					const mapLoad = pyscript.interpreter.globals.get('startMap');
+					mapLoad();
 				});
 			</script>
 		</div>
