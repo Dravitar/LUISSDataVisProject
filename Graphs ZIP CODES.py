@@ -36,12 +36,14 @@ for col in data.columns:
     trace = go.Bar(x=data.index, y=data[col], name=col, marker={'color': colors[col],'line': {'color': 'black', 'width': 2}})
     traces.append(trace)
 
-layout = go.Layout(title='Highest Total Sales Tax Rates', barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}}, 
+layout = go.Layout(title='Highest Total Sales Tax Rates', barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}, 'range':'[0, 0.12]'}, 
                    colorway=list(colors.values()), 
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}}, 
                    font={'size': 20}, plot_bgcolor='white', paper_bgcolor='white', 
                    margin={'l': 40, 'b': 40, 't': 80, 'r': 10}, 
                    bargap=0.15, bargroupgap=0.1)
+
+
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
 pyo.plot(fig, filename='Highest_total_sales_tax_rates.html', auto_open=False)
@@ -141,6 +143,7 @@ cb = {'South': '#A3333D', 'North': '#477998'}
 bb = zdf.groupby(['Density', 'Total Rate', 'Region']).count()
 bb = pd.DataFrame(bb['Zip Code']).reset_index()
 bb = bb.rename(columns={'Zip Code': 'Number of Cities'})
+bb = bb[(bb["Density"] != 0) & (bb["Total Rate"] != 0)]
 
 fig, ax = plt.subplots()
 ax.set_title('Density vs Total Taxes by Region')
