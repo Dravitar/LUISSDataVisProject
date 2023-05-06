@@ -36,7 +36,7 @@ folium.Choropleth(
 ).add_to(map_usa)
 
 # Display the map
-map_usa
+#map_usa
 
 
 
@@ -61,3 +61,8 @@ def pie_state(state_name):
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}, 'xanchor':'right', 'x':1.3})
     
     fig = go.Figure(data=data, layout=layout)
+    
+  
+def USAMap():
+	  elem2 = Element("usa-map")
+	  elem2.write(m)
