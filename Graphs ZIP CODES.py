@@ -7,7 +7,6 @@ import plotly.graph_objs as go
 import plotly.io as pio
 import plotly.offline as pyo
 from pyodide.http import open_url
-import js
 
 
 # Load data
@@ -29,6 +28,32 @@ colors = {'State Rate':'#A3333D', 'County Rate':'#FFFFFF', 'City Rate':'#1C1F33'
 #==================================================================================
 
 # GRAPH 1: Stacked bar charts for highest and lowest total taxes
+## All States
+data = states.sort_values('Total Rate')
+# Create traces for each category and a layout for the graph
+traces = []
+for col in data.columns:
+    trace = go.Bar(x=data.index, y=data[col], name=col, marker={'color': colors[col],'line': {'color': 'black', 'width': 2}})
+    traces.append(trace)
+
+layout = go.Layout(title={'text': 'Average Distribution of Sales Taxes by State','x': 0.5,'xanchor': 'center','yanchor': 'top','font': {'size': 30, 'family': 'Arial Black'}},
+                   barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}, 'range':[0, 0.12]}, 
+                   colorway=list(colors.values()), 
+                   legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}}, 
+                   font={'size': 20}, plot_bgcolor='white', paper_bgcolor='white', 
+                   margin={'l': 40, 'b': 40, 't': 80, 'r': 10}, 
+                   bargap=0.15, bargroupgap=0.1)
+
+# Create and display figure
+fig = go.Figure(data=traces, layout=layout)
+pyo.plot(fig, filename='Highest_total_sales_tax_rates.html', auto_open=False)
+
+fig.show()
+# Save the picture in HD
+#pio.write_image(fig, file='Sales Tax Rates Avg.png', format='png', width=1200, height=800)
+
+
+
 ## States with highest total taxes
 data = states.sort_values('Total Rate', ascending=False).head(5).drop(columns='Total Rate')
 # Create traces for each category and a layout for the graph
@@ -37,7 +62,8 @@ for col in data.columns:
     trace = go.Bar(x=data.index, y=data[col], name=col, marker={'color': colors[col],'line': {'color': 'black', 'width': 2}})
     traces.append(trace)
 
-layout = go.Layout(title='Highest Total Sales Tax Rates', barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}, 'range':[0, 0.12]}, 
+layout = go.Layout(title={'text': 'Highest Total Sales Tax Rates','x': 0.5,'xanchor': 'center','yanchor': 'top','font': {'size': 30, 'family': 'Arial Black'}},
+                   barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}, 'range':[0, 0.12]}, 
                    colorway=list(colors.values()), 
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}}, 
                    font={'size': 20}, plot_bgcolor='white', paper_bgcolor='white', 
@@ -49,7 +75,7 @@ layout = go.Layout(title='Highest Total Sales Tax Rates', barmode='stack', xaxis
 fig = go.Figure(data=traces, layout=layout)
 pyo.plot(fig, filename='Highest_total_sales_tax_rates.html', auto_open=False)
 
-#fig.show()
+fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Highest Total Sales Tax Rates.png', format='png', width=1200, height=800)
 
@@ -61,7 +87,7 @@ traces = []
 for col in data.columns:
     trace = go.Bar(x=data.index, y=data[col], name=col, marker={'color': colors[col],'line': {'color': 'black', 'width': 2}})
     traces.append(trace)
-layout = go.Layout(title='Lowest Total Sales Tax Rates', barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}}, 
+layout = go.Layout(title={'text': 'Lowest Total Sales Tax Rates','x': 0.5,'xanchor': 'center','yanchor': 'top','font': {'size': 30, 'family': 'Arial Black'}}, barmode='stack', xaxis={'title': 'State', 'title_font': {'size': 20}}, yaxis={'title': 'Sales Tax Rate', 'title_font': {'size': 20}, 'range':[0, 0.12]}, 
                    colorway=list(colors.values()), 
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}}, 
                    font={'size': 20}, plot_bgcolor='white', paper_bgcolor='white', 
@@ -70,7 +96,7 @@ layout = go.Layout(title='Lowest Total Sales Tax Rates', barmode='stack', xaxis=
 # Create and display figure
 fig = go.Figure(data=traces, layout=layout)
 pyo.plot(fig, filename='lowest_total_sales_tax_rates.html', auto_open=False)
-#fig.show()
+fig.show()
 # Save the picture in HD
 #pio.write_image(fig, file='Lowest Total Sales Tax Rates.png', format='png', width=1200, height=800)
 
@@ -213,8 +239,10 @@ def getZipCodeGraph(zipCode, price):
     
   fig = go.Figure(data=data, layout=layout)
   
+
+  elem = Element("image_container")
   pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
-  js.plot(fig.to_json(), "image_container")
+  elem.write(fig)
   
   elem2 = Element("price_container")
   elem2.write(tp)
