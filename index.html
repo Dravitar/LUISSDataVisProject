@@ -43,7 +43,7 @@
 			<div id="usa-map"></div>
 			<script type='text/javascript'>
 				function plot(graph, chart) {
-					var figure = [JSON.parse(graph)]
+					var figure = JSON.parse(graph)
 					Plotly.newPlot(chart, figure, {});
 				};
 				document.getElementById("show-map-button").addEventListener("click", () => {
