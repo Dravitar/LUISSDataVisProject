@@ -3,6 +3,7 @@ import folium
 import plotly.graph_objs as go
 from pyodide.http import open_url
 import js
+import json
 
 
 # Load data
