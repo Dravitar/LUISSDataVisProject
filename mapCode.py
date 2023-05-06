@@ -22,9 +22,12 @@ states = pd.DataFrame(states).reset_index()
 # Create a map centered on the United States
 map_usa = folium.Map(location=[37.0902, -95.7129], zoom_start=4)
 
+# Upload the file we used to get the information on the States borders
+us-states=json.loads(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/us-states.json").valueof())
+
 # Create a choropleth map using the Total Rate column
 folium.Choropleth(
-    geo_data='us-states.json',
+    geo_data='us-states',
     name='choropleth',
     data=states,
     columns=['Official State Name', 'Total Rate'],
