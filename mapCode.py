@@ -2,6 +2,7 @@ import pandas as pd
 import folium
 import plotly.graph_objs as go
 from pyodide.http import open_url
+import js
 
 
 # Load data
@@ -40,7 +41,8 @@ folium.Choropleth(
 
 # Display the map
 #map_usa
-
+def startMap():
+	js.plot(map_usa.to_json(), "usa-map")
 
 
 def pie_state(state_name):
@@ -64,8 +66,3 @@ def pie_state(state_name):
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}, 'xanchor':'right', 'x':1.3})
     
     fig = go.Figure(data=data, layout=layout)
-    
-  
-def USAMap():
-	  elem2 = Element("usa-map")
-	  elem2.write(m)
