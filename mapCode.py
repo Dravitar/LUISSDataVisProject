@@ -23,3 +23,7 @@ folium.Choropleth(
 folium.LayerControl().add_to(m)
 
 m.save("map.html")
+
+def USAMap():
+	elem2 = Element("usa-map")
+	elem2.write(fig)
