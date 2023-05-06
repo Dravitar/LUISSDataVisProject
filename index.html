@@ -42,7 +42,7 @@
 			<script type='text/javascript'>
 				function plot(graph, chart) {
 					var figure = JSON.parse(graph)
-					Plotly.newPlot(chart, figure, {});
+					plotly.newPlot(chart, figure, {});
 				};
 				document.getElementById("map-container").addEventListener("load", () => {
 					const mapLoad = pyscript.interpreter.globals.get('startMap');
