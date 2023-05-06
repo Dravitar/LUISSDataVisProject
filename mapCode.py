@@ -43,10 +43,9 @@ folium.Choropleth(
 # Display the map
 #map_usa
 def startMap():
-	elem = Element("usa-map")
-	elem.write(map_usa)
-
-
+	elemm = Element("usa-map")
+	elemm.write(map_usa)
+	
 def pie_state(state_name):
 	data = states[states["Official State Name"] == state_name].reset_index()
 	ttl = ("Average Distribution of Sales Taxes in " + str(state_name))
