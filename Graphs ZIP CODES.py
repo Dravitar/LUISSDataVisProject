@@ -2,10 +2,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+sns.set_style("white")
 import plotly.graph_objs as go
 import plotly.io as pio
-from pyodide.http import open_url
 import plotly.offline as pyo
+from pyodide.http import open_url
 
 
 # Load data
@@ -23,7 +24,6 @@ cities = zdf.groupby(['Official State Name', 'Official USPS city name'])[['Total
 # creating the colors dictionary
 colors = {'State Rate':'#A3333D', 'County Rate':'#FFFFFF', 'City Rate':'#1C1F33', 'Additional Rate':'#477998'}
 
-# Rest of the code remains the same
 
 #==================================================================================
 
@@ -99,22 +99,6 @@ pyo.plot(fig, filename='tax_rates_by_type.html', auto_open=False)
 ## Select columns for box plot
 boxplot_data = states[['State Rate', 'County Rate', 'City Rate', 'Additional Rate']]
 
-traces = []
-for col in boxplot_data.columns:
-    trace = go.Box(y=boxplot_data[col], name=col, marker={'color': colors[col], 'line': {'color': 'black', 'width': 2}})
-    traces.append(trace)
-
-layout = go.Layout(title='Comparison of Tax Rates by Type', font={'size': 20}, xaxis={'title': 'Tax Rate Types'}, yaxis={'title': 'Rate Value'},
-                   paper_bgcolor='white')
-
-fig = go.Figure(data=traces, layout=layout)
-pyo.plot(fig, filename='comparison_of_tax_rates_by_type.html', auto_open=False)
-
-
-# GRAPH 3: Box plot for comparison of tax rates by type
-## Select columns for box plot
-boxplot_data = states[['State Rate', 'County Rate', 'City Rate', 'Additional Rate']]
-
 ## Create box plot
 c = ["#A3333D", "#FFFFFF", "#1C1F33", "#477998"]
 pal = sns.color_palette(c)
@@ -135,7 +119,10 @@ for median in bp['medians']:
 ax.set_title('Comparison of Tax Rates by Type')
 ax.set_ylabel('Tax Rate')
 
+plt.savefig("Boxplot.png", dpi=300)
+
 #plt.show()
+
 
 ## Extract latitude from Geo Point column
 zdf['Latitude'] = zdf['Geo Point'].str.split(',').str[0].astype(float)
@@ -159,18 +146,29 @@ fig, ax = plt.subplots()
 ax.set_title('Density vs Total Taxes by Region')
 sns.scatterplot(bb,x="Density",y="Total Rate",size="Number of Cities",hue='Region',
                 palette=cb,alpha=0.5,sizes=(20, 700))
+sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+plt.subplots_adjust(right=0.7)
+plt.savefig("bb.png", dpi=300)
 
+## bubble chart for south only
 sb = bb[bb['Region'] == 'South']
 fig, ax = plt.subplots()
 ax.set_title('Density vs Total Taxes by Region - Southern Region')
-sns.scatterplot(sb,x="Density",y="Total Rate",size="Number of Cities",hue='Region',
+sns.scatterplot(sb,x="Density",y="Total Rate",c='#A3333D',size="Number of Cities",
                 palette=cb,alpha=0.5,sizes=(20, 700))
+sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+plt.subplots_adjust(right=0.7)
+plt.savefig("sb.png", dpi=300)
 
+## bubble chart for north only
 nb = bb[bb['Region'] == 'North']
 fig, ax = plt.subplots()
 ax.set_title('Density vs Total Taxes by Region - Northern Region')
-sns.scatterplot(nb,x="Density",y="Total Rate",size="Number of Cities",hue='Region',
+sns.scatterplot(nb,x="Density",y="Total Rate",c='#477998',size="Number of Cities",
                 palette=cb,alpha=0.5,sizes=(20, 700))
+sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
+plt.subplots_adjust(right=0.7)
+plt.savefig("nb.png", dpi=300)
 
 
 # =============================================================================
@@ -210,6 +208,7 @@ def getZipCodeGraph(zipCode, price):
                    legend={'bordercolor': 'black', 'borderwidth': 1, 'font': {'size': 16}, 'xanchor':'right', 'x':1.3})
     
   fig = go.Figure(data=data, layout=layout)
+  
 
   elem = Element("image_container")
   pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
@@ -217,4 +216,3 @@ def getZipCodeGraph(zipCode, price):
   
   elem2 = Element("price_container")
   elem2.write(tp)
- 
