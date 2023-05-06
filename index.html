@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css"/>
         <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 	<script type="text/javascript" src="webCode.js"></script>
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
         <title>American Zip Code Visualizer</title>
 	</head>
@@ -42,7 +43,7 @@
 			<script type='text/javascript'>
 				function plot(graph, chart) {
 					var figure = JSON.parse(graph)
-					plotly.newPlot(chart, figure, {});
+					Plotly.newPlot(chart, figure, {});
 				};
 				document.getElementById("map-container").addEventListener("load", () => {
 					const mapLoad = pyscript.interpreter.globals.get('startMap');
