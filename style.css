@@ -2,13 +2,8 @@ header {
 }
 body {
 	background-image: url('ZDF pictures/Edited Website Background.webp') no-repeat center center fixed;
-	background-size: cover;
-	background-position: center;
 }
 main {
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
 }
 footer {
 }
