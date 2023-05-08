@@ -71,7 +71,10 @@
 			    text-decoration: none;
 			    color: #333;
 			  }
-				
+			.scrollable-div {
+			    height: 300px; /* Set a fixed height for the div */
+			    overflow-y: auto; /* Enable vertical scrolling if the content overflows the div's height */
+			  }	
 		</style>
 	</header>
 	<section id="home_section">
@@ -147,7 +150,7 @@
 				On the other hand, the states with the lowest taxes are mostly from the North (again, with the exception of Hawaii)<br>
 				(Please also note how this latter graph excludes the 5 states with no state taxes).
 			</div>
-			<div class="column">
+			<div class="column scrollable-div">
 				<div class="row">
 				<img class="graph column" src="ZDF pictures/Highest Total Sales Tax Rates.png">
 			</div>
