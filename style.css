@@ -2,6 +2,8 @@ header {
 }
 body {
 	background-image: url('ZDF pictures/Edited Website Background.webp');
+	background-size: cover;
+	background-position: center;
 }
 main {
 	background-size: cover;
