@@ -1,0 +1,74 @@
+##About the project:
+Sales Taxes are taxes placed on goods and services sold.
+In the United States, this rate is not applied immediately on the price tag, but is calculated at the moment of check out. In addition, each Zip Code has a different sales tax rate to apply to what is sold in that area.
+These aspects can make the shopping experience difficult and confusing. For this reason, we developed our Sales Tax Explorer!
+
+With the Sales Tax Explorer, you can easily calculate the price of your item after sales taxes. You just have to enter the Zip Code of the area you are interested in and the initial price of your item. Not only is the website going to calculate the total price, but it is also providing an informative pie chart to visualize where exactly that tax is going to be redirected to (whether that is to the State, to the County, to the City, or to another 'additional' category).
+
+In addition to this, we implemented an interactive map that will showcase what states have higher or lower sales taxes on average. Then, by clicking on a state you are able to visualize a pie chart giving more information on the distribution of sales taxes in that specific part of the country!
+
+##Dataset Construction:
+To build the dataset implemented for the Explorer, we used two different sources. Firstly, we pulled the tax rates from API Ninjas. Secondly, we got the additional information regarding the Zip Codes from OpenDataSoft.
+Merging them together, we obtained a dataset composed of the following variables:
+
+Zip Code
+Total Rate
+State Rate
+City Rate
+County Rate
+Additional Rate
+City Name
+State Name
+Population
+Density
+County Code
+County Name
+Geo Point
+
+##Task Analysis:
+Our analysis was focused on three areas:
+1. COMPARISON:
+What are the states with the highest and lowest sales tax rates?
+On average, what percentage of sales taxes is reserved for the state, which to the city, and which to the county?
+
+2. CORRELATION:
+Is there any correlation between between tax rates and population density in a city?
+
+3. INTERACTION:
+Creating the Sales Tax Calculator
+Creating the interactive US map
+
+##Main Findings:
+This analysis gave rise to many insights.
+To begin with, we visualized the sales tax distribution among all the states involved.
+[Sales Tax Rates Avg.png]
+From this we can tell that all states - except for Alaska - have some form of state rate. Moreover, we can identify the 4 States that have no Sales Taxes at all: Montana, Oregon, New Hampshire, and Delaware.
+
+To make this visualization more approachable, we zoomed in on the states with the top 5 highest total taxes, and top 5 lowest total taxes.
+[Highest Total Sales Tax Rates.png] [Lowest Total Sales Tax Rates.png]
+From this we can derive that the states with the highest taxes on average are mostly from the South (with exception to Puerto Rico). On the other hand, the states with the lowest taxes are mostly from the North (again, with the exception of Hawaii)(Please also note how this latter graph excludes the 5 states with no state taxes).
+
+We also visualized the data by taking an average of the US as a whole, and analyzing the distribution of sales taxes across the country.
+[Tax Rates by Type.png]
+From here we were able to confirm that, on average, the vast majority of sales taxes goes towards the state, followed by the county and by the city. A quite small percentage goes instead to an additional rate.
+
+The distribution can also be visualized in the form of box plots. Once again, we can identify the different value ranges each rate takes.
+[Boxplot.png]
+The box plots are also very effective in identifying outliers. In particular:
+State Rate Outliers: Puerto Rico (upper outlier); Alaska, Delaware, New Hampshire, Oregon,  Montana (lower outliers)
+County Rate Outliers: New York, Georgia, Nevada
+City Rate Outliers: Oklahoma, Nevada, Colorado
+Additional Rate Outliers: California, Lousiana, South Carolina
+
+Finally, we focused on analyzing any trends that would be visible between the density of a city and its total rate. We did this through the creation of a bubble chart, in which the size would be dictated by the number of cities with the same characteristics, and the color by the region (blue being North and red being South - depending on whether the city was below or above the Mason-Dixon line).
+[bb.png]
+Unfortunately, we could not find any significant trends related to these variables.
+Even after splitting the data to isolate Northern and Souther cities, there is not much insight obtained, or at least nothing that was not already apparent from the previous visualizations.
+[nb.png] [sb.png]
+
+##Conclusions
+IDK ALEX COME UP WITH A WITTY LINE LIKE "PLEASE ENJOY OUR SALES TAX EXPLORER. THANK YOU AND BYE BYE"
+
+
+###Notice:
+Sales Tax rates are sometimes subject to change. The Sales Tax explorer is using data updated as of April 2023.
