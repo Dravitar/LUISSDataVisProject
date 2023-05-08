@@ -16,12 +16,21 @@
         <py-script src="https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/webCode.py"></py-script>
         <py-script src="https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/Graphs%20ZIP%20CODES.py"></py-script>
 	<header>
-		<button class="tab active" onclick="showSection('main')">Main</button>
+		<div class="title" id="title">SalesTaxExplorer</div>
+		<button class="tab active" onclick="showSection('home')">Home</button>
+		<button class="tab" onclick="showSection('search')">Zip Code Search</button>
+		<button class="tab" onclick="showSection('state')">Select a State</button>
+		<button class="tab" onclick="showSection('national')">National Statistics</button>
 		<button class="tab" onclick="showSection('about')">About</button>
 		<button class="tab" onclick="showSection('contact')">Contact</button>
 	</header>
-	<main id="main_section", style="text-align: center">
+	<section id="home_section">
 		<h1>Welcome to SalesTaxExplorer!</h1>
+		<h2>This interactive website will allow you to look up sales tax information for any state in the US.<br>
+			You can also search by zip code to see a detailed breakdown for that area.<br>
+			Finally, we also have some graphs breaking down national trends and averages.</h2>
+	</section>
+	<section id="search_section", style="text-align: center; display: none;">
 		<form>
 			<label for="zip_code">Enter your zip code:</label>
 			<input type="text" id="zip_code" name="zip_code">
@@ -39,6 +48,8 @@
 		</form>
 		<h3>Your total price would be $<span id="price_container">0.00</span> after state taxes.</h3>
 		<div id="image_container"></div>
+	</section>
+	<section id="state_section" style="display:none">
 		<div id="map-container" style="text-align: center; width:80%">
 			<button type="button" id="show-map-button">Show US Map</button>
 			<div id="usa-map" width="100%" style="display: none"></div>
@@ -63,7 +74,40 @@
 				});
 			</script>
 		</div>
-	</main>
+	</section>
+	<section id="national_section" style="display:none">
+		<button class="subtabbtn active" onclick="showTab('average_by_state')">State Averages</button>
+		<button class="subtabbtn" onclick="showTab('high_and_low')">Highs and Lows</button>
+		<button class="subtabbtn" onclick="showTab('national_pie')">National Breakdown</button>
+		<button class="subtabbtn" onclick="showTab('national_outliers')">Outliers</button>		
+		<subtab id="average_by_state_subtab">
+			<img src="ZDF pictures/Sales Tax Rates Avg.png">
+			<div> Talk about this image.
+			</div>
+		</subtab>
+		<subtab id="high_and_low_subtab" style="display: none" class="col">
+			<div class="row">
+				<img src="ZDF pictures/Highest Total Sales Tax Rates.png">
+				<div> Talk about this image.
+				</div>
+			</div>
+			<div class="row">
+				<img src="ZDF pictures/Lowest Total Sales Tax Rates.png">
+				<div> Talk about this image.
+				</div>
+			</div>
+		</subtab>
+		<subtab id="national_pie_subtab" style="display: none">
+			<img src="ZDF pictures/Tax Rates by Type.png">
+			<div> Talk about this image.
+			</div>
+		</subtab>
+		<subtab id="national_outliers_subtab" style="display: none">
+			<img src="ZDF pictures/Boxplot.png">
+			<div> Talk about this image.
+			</div>
+		</subtab>
+	</section>
 	<section id="about_section" style="display:none">
 		<h2>About</h2>
 		<p>Some information about the application.</p>
