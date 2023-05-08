@@ -47,18 +47,18 @@
 		      text-align: center;
 		    }
 
-		    @keyframes glitch {
-		      0%, 100% {
-			transform: skew(0, 0);
-		      }
-		      50% {
-			transform: skew(60deg, -30deg) scaleY(.66667);
-		      }
+		    .zoom-on-hover-title {
+			  font-size: 24px;
+			  transition: transform 0.5s;
+			}
+			.zoom-on-hover-title:hover {
+			  transform: scale(1.5, 1.5);
+			}
 		    }
 		</style>
 	</header>
 	<section id="home_section">
-		<h1>Welcome to SalesTaxExplorer!</h1>
+		<h1 class="zoom-on-hover-title>Welcome to SalesTaxExplorer!</h1>
 		<h2>This interactive website will allow you to look up sales tax information for any state in the US.<br>
 			You can also search by zip code to see a detailed breakdown for that area.<br>
 			Finally, we also have some graphs breaking down national trends and averages.</h2>
