@@ -16,6 +16,24 @@ function showSection(sectionId) {
 	activeTab.classList.add("active");
 }
 
+function showSubtab(subtabId) {
+	// Hide all subtabs
+	var subtabs = document.getElementsByTagName("subtab");
+	for (var i = 0; i < subtabs.length; i++) {
+		subtabs[i].style.display = "none";
+	}
+	// Show the selected section
+	var subtab = document.getElementById(subtabId + "_subtab);
+	subtab.style.display = "block";
+	// Set the active minitab button
+	var subtabbtns = document.getElementsByClassName("subtabbtn");
+	for (var i = 0; i < subtabbtns.length; i++) {
+		subtabbtns[i].classList.remove("active");
+	}
+	var activeTab = document.querySelector(".subtabbtn[data-section='" + subtabId + "']");
+	activeTab.classList.add("active");
+}
+
 function test() {
 	alert("test")
 }
