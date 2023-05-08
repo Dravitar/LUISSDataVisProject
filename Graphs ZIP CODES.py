@@ -26,7 +26,7 @@ colors = {'State Rate':'#A3333D', 'County Rate':'#FFFFFF', 'City Rate':'#1C1F33'
 
 
 #==================================================================================
-'''
+
 # GRAPH 1: Stacked bar charts for highest and lowest total taxes
 ## All States
 # Set the default renderer to 'svg'
@@ -205,7 +205,7 @@ sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
 plt.subplots_adjust(right=0.7)
 plt.savefig("nb.png", dpi=300)
 
-'''
+
 # =============================================================================
 ### INTERACTIVE GRAPHS
 # GRAPH 1: given a zip code and a price, calculate the total after taxes and
@@ -245,9 +245,8 @@ def getZipCodeGraph(zipCode, price):
   fig = go.Figure(data=data, layout=layout)
   
 
-  elem = Element("image_container")
   pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
-  elem.write(fig)
+  js.plot(fig.to_json(), "image_container")
   
   elem2 = Element("price_container")
   elem2.write(tp)
