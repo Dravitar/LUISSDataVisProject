@@ -46,7 +46,7 @@
 					var figure = JSON.parse(graph)
 					Plotly.newPlot(chart, figure, {});
 				};
-				window.addEventListener("load", () => {
+				document.getElementById("map-container").addEventListener("load", () => {
 					const mapLoad = pyscript.interpreter.globals.get('startMap');
 					mapLoad();
 				});
