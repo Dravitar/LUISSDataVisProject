@@ -3,6 +3,8 @@ header {
 html {
 	background-image: url('ZDF pictures/Edited Website Background.webp') no-repeat center center fixed;
 	background-size: cover;
+	height: 100%;
+	overflow: hidden;
 }
 main {
 }
@@ -23,6 +25,6 @@ footer {
 	background-color: #8BC34A;
 }
 #map-container {
-	width: 50%;
+	width: 80%;
 	margin: 2em auto;
 }
