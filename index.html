@@ -51,12 +51,12 @@
 					mapLoad();
 				});
 				document.getElementById("show-map-button").addEventListener("click", () => {
-					if (document.getElementById("show-map-button").text == "Show US Map"){
-						document.getElementById("show-map-button").text = "Hide US Map";
+					if (document.getElementById("show-map-button").textContnet == "Show US Map"){
+						document.getElementById("show-map-button").textContent = "Hide US Map";
 						document.getElementById("usa-map").style.display = "";
 					}
 					else {
-						document.getElementById("show-map-button").text = "Show US Map";
+						document.getElementById("show-map-button").textContent = "Show US Map";
 						document.getElementById("usa-map").style.display = "none";
 					}
 				});
