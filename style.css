@@ -17,7 +17,7 @@ footer {
 }
 
 /* Style the tab buttons */
-.tab {
+.tab .subtabbtn {
 	background-color: #BF5763;
 	color: white;
 	padding: 8px 16px;
@@ -32,4 +32,11 @@ footer {
 #map-container {
 	width: 80%;
 	margin: 2em auto;
+}	
+.row {
+  flex: 50%;
 }
+
+.column {
+  display: flex;
+}	
