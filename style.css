@@ -42,6 +42,10 @@ footer {
   flex: 50%;
 }	
 
+.column3 {
+  flex: 33%;
+}
+
 .graph {
   width: 50%;
 }
