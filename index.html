@@ -44,7 +44,33 @@
 		    #home_section {
 			  text-align: center;
 			}
-
+			.team-container {
+			    display: flex;
+			    flex-wrap: wrap;
+			    justify-content: center;
+			  }
+			  .team-member {
+			    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			    border-radius: 4px;
+			    padding: 20px;
+			    margin: 10px;
+			    width: 300px;
+			    background-color: #f9f9f9;
+			  }
+			  .team-member h3 {
+			    margin-top: 0;
+			  }
+			  .team-member ul {
+			    list-style-type: none;
+			    padding-left: 0;
+			  }
+			  .team-member ul li {
+			    margin-bottom: 10px;
+			  }
+			  .team-member ul li a {
+			    text-decoration: none;
+			    color: #333;
+			  }
 				
 		</style>
 	</header>
@@ -152,23 +178,29 @@
 		<p>Other state information from <a href="https://data.opendatasoft.com/explore/dataset/georef-united-states-of-america-zc-point%40public/table/">opendatasoft</a>.</p>
 	</section>
 	<section id="contact_section" style="display:none">
-	<h2>Contact</h2>
-	<ul>
-		<li>
-			<span class="team-member-name">Alex Nathan Henderson</span><br>
-			<a href="mailto:nathan.henderson@studenti.luiss.it">nathan.henderson@studenti.luiss.it</a><br>
-			<a href="https://www.linkedin.com/in/alex-henderson-056943197/">LinkedIn</a>
-		</li>
-		<li>
-			<span class="team-member-name">Arianna Bucca</span><br>
-			<a href="https://www.linkedin.com/in/ariannabucca/">LinkedIn</a>
-		</li>
-		<li>
-			<span class="team-member-name">Fatma Soussi</span><br>
-			<a href="mailto:fatma.soussi@studenti.luiss.it">fatma.soussi@studenti.luiss.it</a><br>
-			<a href="https://www.linkedin.com/in/fatma-soussi-96b281175/">LinkedIn</a>
-		</li>
-	</ul>
+  <h2>Contact</h2>
+  <div class="team-container">
+    <div class="team-member">
+      <h3>Alex Nathan Henderson</h3>
+      <ul>
+        <li>Email: <a href="mailto:nathan.henderson@studenti.luiss.it">nathan.henderson@studenti.luiss.it</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/alex-henderson-056943197/">alex-henderson-056943197</a></li>
+      </ul>
+    </div>
+    <div class="team-member">
+      <h3>Arianna Bucca</h3>
+      <ul>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/ariannabucca/">ariannabucca</a></li>
+      </ul>
+    </div>
+    <div class="team-member">
+      <h3>Fatma Soussi</h3>
+      <ul>
+        <li>Email: <a href="mailto:fatma.soussi@studenti.luiss.it">fatma.soussi@studenti.luiss.it</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/fatma-soussi-96b281175/">fatma-soussi-96b281175</a></li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 	<footer>
