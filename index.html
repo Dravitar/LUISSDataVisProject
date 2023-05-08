@@ -21,12 +21,6 @@
 		<button class="tab" onclick="showSection('contact')">Contact</button>
 	</header>
 	<main id="main_section", style="text-align: center">
-		<script>
-			window.onload = function() {
-				const mapLoad = pyscript.interpreter.globals.get('startMap');
-				mapLoad();
-			};
-		</script>
 		<h1>Welcome to SalesTaxExplorer!</h1>
 		<form>
 			<label for="zip_code">Enter your zip code:</label>
@@ -55,6 +49,10 @@
 				};
 				document.getElementById("show-map-button").addEventListener("click", () => {
 					if (document.getElementById("show-map-button").textContent == "Show US Map"){
+						if (document.getElementById("usa-map").childNodes.length == 0) {
+							const mapLoad = pyscript.interpreter.globals.get('startMap');
+							mapLoad();
+						}
 						document.getElementById("show-map-button").textContent = "Hide US Map";
 						document.getElementById("usa-map").style.display = "";
 					}
