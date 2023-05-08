@@ -12,7 +12,7 @@ function showSection(sectionId) {
 	for (var i = 0; i < tabs.length; i++) {
 		tabs[i].classList.remove("active");
 	}
-	var activeTab = document.querySelector(".tab[data-section='" + sectionId + "']");
+	var activeTab = document.querySelector(".tab[id='" + sectionId + "']");
 	activeTab.classList.add("active");
 }
 
@@ -30,7 +30,7 @@ function showSubtab(subtabId) {
 	for (var i = 0; i < subtabbtns.length; i++) {
 		subtabbtns[i].classList.remove("active");
 	}
-	var activeTab = document.querySelector(".subtabbtn[data-section='" + subtabId + "']");
+	var activeTab = document.querySelector(".subtabbtn[id='" + subtabId + "']");
 	activeTab.classList.add("active");
 }
 
