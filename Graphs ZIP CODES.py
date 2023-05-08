@@ -246,7 +246,7 @@ def getZipCodeGraph(zipCode, price):
   
 
   elem = Element("image_container")
-  pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
+  #pyo.plot(fig, filename=f'distribution_of_sales_taxes_{zipCode}.html', auto_open=False)
   elem.write(fig)
   
   elem2 = Element("price_container")
