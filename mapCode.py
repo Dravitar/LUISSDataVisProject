@@ -42,7 +42,7 @@ folium.Choropleth(
 
 folium.Marker(
     [32.806671,	-86.791130], popup="<iframe src='projectImages/Alabama.html'></iframe>", tooltip="Alabama"
-).add_to(m)
+).add_to(map_usa)
 
 # Display the map
 #map_usa
