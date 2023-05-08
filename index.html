@@ -46,12 +46,12 @@
 					var figure = JSON.parse(graph)
 					Plotly.newPlot(chart, figure, {});
 				};
-				document.getElementById("usa-map").addEventListener("load", () => {
+				window.addEventListener("load", () => {
 					const mapLoad = pyscript.interpreter.globals.get('startMap');
 					mapLoad();
 				});
 				document.getElementById("show-map-button").addEventListener("click", () => {
-					if (document.getElementById("show-map-button").textContnet == "Show US Map"){
+					if (document.getElementById("show-map-button").textContent == "Show US Map"){
 						document.getElementById("show-map-button").textContent = "Hide US Map";
 						document.getElementById("usa-map").style.display = "";
 					}
