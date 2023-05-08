@@ -17,12 +17,12 @@
         <py-script src="https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/Graphs%20ZIP%20CODES.py"></py-script>
 	<header>
 		<div class="title" id="title">SalesTaxExplorer</div>
-		<button class="tab active" onclick="showSection('home')">Home</button>
-		<button class="tab" onclick="showSection('search')">Zip Code Search</button>
-		<button class="tab" onclick="showSection('state')">Select a State</button>
-		<button class="tab" onclick="showSection('national')">National Statistics</button>
-		<button class="tab" onclick="showSection('about')">About</button>
-		<button class="tab" onclick="showSection('contact')">Contact</button>
+		<button class="tab active" id="home" onclick="showSection('home')">Home</button>
+		<button class="tab" id="search" onclick="showSection('search')">Zip Code Search</button>
+		<button class="tab" id="state" onclick="showSection('state')">Select a State</button>
+		<button class="tab" id="national" onclick="showSection('national')">National Statistics</button>
+		<button class="tab" id="about" onclick="showSection('about')">About</button>
+		<button class="tab" id="contact" onclick="showSection('contact')">Contact</button>
 	</header>
 	<section id="home_section">
 		<h1>Welcome to SalesTaxExplorer!</h1>
@@ -76,47 +76,47 @@
 		</div>
 	</section>
 	<section id="national_section" style="display:none">
-		<button class="subtabbtn active" onclick="showSubtab('average_by_state')">State Averages</button>
-		<button class="subtabbtn" onclick="showSubtab('high_and_low')">Highs and Lows</button>
-		<button class="subtabbtn" onclick="showSubtab('national_pie')">National Breakdown</button>
-		<button class="subtabbtn" onclick="showSubtab('national_outliers')">Outliers</button>		
+		<button class="subtabbtn active" id="average_by_state" onclick="showSubtab('average_by_state')">State Averages</button>
+		<button class="subtabbtn" id="high_and_low" onclick="showSubtab('high_and_low')">Highs and Lows</button>
+		<button class="subtabbtn" id="national_pie" onclick="showSubtab('national_pie')">National Breakdown</button>
+		<button class="subtabbtn" id="national_outliers" onclick="showSubtab('national_outliers')">Outliers</button>		
 		<subtab id="average_by_state_subtab">
 			<img class="graph" src="ZDF pictures/Sales Tax Rates Avg.png">
-			<div> This analysis gave rise to many insights.
-				To begin with, we visualized the sales tax distribution among all the states involved.
-				From this we can tell that all states - except for Alaska - have some form of state rate.
-				Moreover, we can identify the 4 States that have no Sales Taxes at all: Montana, Oregon, New Hampshire, and Delaware.
+			<div> This analysis gave rise to many insights.<br>
+				To begin with, we visualized the sales tax distribution among all the states involved.<br>
+				From this we can tell that all states - except for Alaska - have some form of state rate.<br>
+				Moreover, we can identify the 4 States that have no Sales Taxes at all: Montana, Oregon, New Hampshire, and Delaware.<br>
 			</div>
 		</subtab>
 		<subtab id="high_and_low_subtab" style="display: none" class="col">
 			<div class="row">
 				<img class="graph" src="ZDF pictures/Highest Total Sales Tax Rates.png">
-				<div> To better visualize our data, we zoomed in on the states with the top 5 highest total taxes, and top 5 lowest total taxes.
+				<div> To better visualize our data, we zoomed in on the states with the top 5 highest total taxes, and top 5 lowest total taxes.<br>
 					From this we can derive that the states with the highest taxes on average are mostly from the South (with exception to Puerto Rico).
 				</div>
 			</div>
 			<div class="row">
 				<img class="graph" src="ZDF pictures/Lowest Total Sales Tax Rates.png">
-				<div> On the other hand, the states with the lowest taxes are mostly from the North (again, with the exception of Hawaii)
+				<div> On the other hand, the states with the lowest taxes are mostly from the North (again, with the exception of Hawaii)<br>
 					(Please also note how this latter graph excludes the 5 states with no state taxes).
 				</div>
 			</div>
 		</subtab>
 		<subtab id="national_pie_subtab" style="display: none">
 			<img class= "graph" src="ZDF pictures/Tax Rates by Type.png">
-			<div> We also decided to visualize the data by taking an average of the US as a whole, and analyzing the distribution of sales taxes across the country.
-				From here we were able to confirm that, on average, the vast majority of sales taxes goes towards the state, followed by the county and by the city.
+			<div> We also decided to visualize the data by taking an average of the US as a whole, and analyzing the distribution of sales taxes across the country.<br>
+				From here we were able to confirm that, on average, the vast majority of sales taxes goes towards the state, followed by the county and by the city.<br>
 				A quite small percentage goes instead to an additional rate.
 			</div>
 		</subtab>
 		<subtab id="national_outliers_subtab" style="display: none">
 			<img class= "graph" src="ZDF pictures/Boxplot.png">
-			<div> The distribution can also be visualized in the form of box plots. Once again, we can identify the different value ranges each rate takes.
-				The box plots are also very effective in identifying outliers. In particular:
-				State Rate Outliers: Puerto Rico (upper outlier); Alaska, Delaware, New Hampshire, Oregon,  Montana (lower outliers)
-				County Rate Outliers: New York, Georgia, Nevada
-				City Rate Outliers: Oklahoma, Nevada, Colorado
-				Additional Rate Outliers: California, Lousiana, South Carolina
+			<div> The distribution can also be visualized in the form of box plots. Once again, we can identify the different value ranges each rate takes.<br>
+				The box plots are also very effective in identifying outliers. In particular:<br>
+				State Rate Outliers: Puerto Rico (upper outlier); Alaska, Delaware, New Hampshire, Oregon,  Montana (lower outliers)<br>
+				County Rate Outliers: New York, Georgia, Nevada<br>
+				City Rate Outliers: Oklahoma, Nevada, Colorado<br>
+				Additional Rate Outliers: California, Lousiana, South Carolina<br>
 			</div>
 		</subtab>
 	</section>
