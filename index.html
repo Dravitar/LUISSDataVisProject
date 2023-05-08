@@ -21,6 +21,12 @@
 		<button class="tab" onclick="showSection('contact')">Contact</button>
 	</header>
 	<main id="main_section", style="text-align: center">
+		<script>
+			window.onload = function() {
+				const mapLoad = pyscript.interpreter.globals.get('startMap');
+				mapLoad();
+			};
+		</script>
 		<h1>Welcome to SalesTaxExplorer!</h1>
 		<form>
 			<label for="zip_code">Enter your zip code:</label>
@@ -28,7 +34,8 @@
 			<label for="price">Enter the initial price of your item:</label>
 			<input type="text" id="price" name="price">
 			<button type="button" id="zipCodeSubmissionButton">Submit</button>
-			<script>document.getElementById("zipCodeSubmissionButton").addEventListener("click", () => {
+			<script>
+				document.getElementById("zipCodeSubmissionButton").addEventListener("click", () => {
 					price = document.getElementById("price").value;
 					zip_code = document.getElementById("zip_code").value;
 					const gZCG = pyscript.interpreter.globals.get('getZipCodeGraph');
@@ -46,10 +53,6 @@
 					var figure = JSON.parse(graph)
 					Plotly.newPlot(chart, figure, {});
 				};
-				document.getElementById("map-container").addEventListener("load", () => {
-					const mapLoad = pyscript.interpreter.globals.get('startMap');
-					mapLoad();
-				});
 				document.getElementById("show-map-button").addEventListener("click", () => {
 					if (document.getElementById("show-map-button").textContent == "Show US Map"){
 						document.getElementById("show-map-button").textContent = "Hide US Map";
