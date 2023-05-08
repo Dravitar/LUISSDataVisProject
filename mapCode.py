@@ -40,9 +40,9 @@ folium.Choropleth(
 	legend_name='Total Sales Taxes (%)',
 ).add_to(map_usa)
 
-folium.Marker(
-    [32.806671,	-86.791130], popup="<iframe class='frame' src='projectImages/Alabama.html'></iframe>", tooltip="Alabama"
-).add_to(map_usa)
+iframe = "<iframe class='frame' src='projectImages/Alabama.html'></iframe>"
+popup = folium.Popup(iframe, min_width=1000, max_width=1000)
+folium.Marker([32.806671,-86.791130], popup=popup, tooltip="Alabama").add_to(map_usa)
 
 # Display the map
 #map_usa
