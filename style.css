@@ -35,13 +35,13 @@ footer {
 	margin: 2em auto;
 }	
 .row {
-  flex: 50%;
+  display: flex;
 }
 
 .column {
-  display: flex;
+  flex: 50%;
 }	
 
 .graph {
-  width: 75%;
+  width: 50%;
 }
