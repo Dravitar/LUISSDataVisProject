@@ -43,8 +43,8 @@ folium.Choropleth(
 # Display the map
 #map_usa
 def startMap():
-	elemm = Element("usa-map")
-	elemm.write(map_usa)
+	elem = Element("usa-map")
+	elem.write(map_usa)
 	
 def pie_state(state_name):
 	data = states[states["Official State Name"] == state_name].reset_index()
