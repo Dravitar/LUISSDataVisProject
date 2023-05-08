@@ -24,7 +24,7 @@ function showSubtab(subtabId) {
 	}
 	// Show the selected section
 	var subtab = document.getElementById(subtabId + "_subtab");
-	subtab.style.display = "block";
+	subtab.style.display = "flex";
 	// Set the active minitab button
 	var subtabbtns = document.getElementsByClassName("subtabbtn");
 	for (var i = 0; i < subtabbtns.length; i++) {
