@@ -215,6 +215,7 @@ plt.savefig("nb.png", dpi=300)
 def getZipCodeGraph(zipCode, price):
   z = int(zipCode)
   p = float(price)
+  tp = 0
   
   for i in range (0, len(zdf)):
       if zdf["Zip Code"][i] == z:
