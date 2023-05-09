@@ -7,6 +7,7 @@ import json
 
 
 # Load data
+locs = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/stateLocs.csv"))
 zdf = pd.read_csv(open_url("https://raw.githubusercontent.com/Dravitar/LUISSDataVisProject/main/zdf.csv"))
 zdf = zdf.rename(columns={'total_rate': 'Total Rate',
 			  'state_rate': 'State Rate',
@@ -40,9 +41,13 @@ folium.Choropleth(
 	legend_name='Total Sales Taxes (%)',
 ).add_to(map_usa)
 
-iframe = "<iframe class='frame' style='height:400px; width:800px; zoom:80%;' src='projectImages/Alabama.html'></iframe>"
-popup = folium.Popup(iframe, min_width="400px", min_height="300px")
-folium.Marker([32.806671,-86.791130], popup=popup, tooltip="Alabama").add_to(map_usa)
+for i in range(len(locs)):
+	state = locs[i]["name"]
+	lat = locs[i]["latitude"]
+	long = locs[i]["longitude"]
+	iframe = "<iframe class='frame' style='height:400px; width:800px; zoom:80%;' src='projectImages/"+state+".html'></iframe>"
+	popup = folium.Popup(iframe, min_width="400px", min_height="300px")
+	folium.Marker([lat,long], popup=popup, tooltip=state).add_to(map_usa)
 
 # Display the map
 #map_usa
