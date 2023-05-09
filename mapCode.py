@@ -42,9 +42,9 @@ folium.Choropleth(
 ).add_to(map_usa)
 
 for i in range(len(locs)):
-	state = locs[i]["name"]
-	lat = locs[i]["latitude"]
-	long = locs[i]["longitude"]
+	state = locs["name"][i]
+	lat = locs["latitude"][i]
+	long = locs["longitude"][i]
 	iframe = "<iframe class='frame' style='height:400px; width:800px; zoom:80%;' src='projectImages/"+state+".html'></iframe>"
 	popup = folium.Popup(iframe, min_width="400px", min_height="300px")
 	folium.Marker([lat,long], popup=popup, tooltip=state).add_to(map_usa)
